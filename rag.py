@@ -5,6 +5,11 @@ import faiss
 import PyPDF2
 import re
 from datetime import datetime
+import os
+load_dotenv()
+from huggingface_hub import login
+hf_token = st.secrets["hf_token"]
+login(token = hf_token)
 
 class EnhancedRAGAgent:
     def __init__(self, 
@@ -178,3 +183,4 @@ Context:
         context = "\n\n".join([chunk for chunk, _, _ in relevant_chunks])
         response = self.generate_response(query, context)
         return response, relevant_chunks
+
