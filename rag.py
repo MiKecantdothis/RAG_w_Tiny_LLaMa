@@ -6,6 +6,7 @@ import PyPDF2
 import re
 from datetime import datetime
 import os
+from dotenv import load_dotenv
 load_dotenv()
 from huggingface_hub import login
 hf_token = st.secrets["hf_token"]
@@ -183,4 +184,5 @@ Context:
         context = "\n\n".join([chunk for chunk, _, _ in relevant_chunks])
         response = self.generate_response(query, context)
         return response, relevant_chunks
+
 
