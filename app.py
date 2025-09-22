@@ -8,8 +8,10 @@ def main():
     st.title("🐒 RAG Agent with Tiny Llama")
     st.markdown("Upload PDF documents and chat with them using advanced AI!")
     @st.cache_resource
+    def load_ragagent():
+        return EnhancedRAGAgent()
     if 'rag_agent' not in st.session_state:
-        st.session_state.rag_agent = EnhancedRAGAgent()
+        st.session_state.rag_agent = load_ragagent()
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
 
@@ -90,5 +92,6 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
