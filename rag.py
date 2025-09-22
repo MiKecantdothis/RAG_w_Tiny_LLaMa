@@ -41,7 +41,7 @@ class EnhancedRAGAgent:
             tokenizer = AutoTokenizer.from_pretrained(self.llm_model_name)
             model = AutoModelForCausalLM.from_pretrained(
                 self.llm_model_name,
-                torch_dtype=torch.float16
+                dtype=torch.float16
             )
             if tokenizer.pad_token is None:
                 tokenizer.pad_token = tokenizer.eos_token
@@ -185,6 +185,7 @@ Context:
         context = "\n\n".join([chunk for chunk, _, _ in relevant_chunks])
         response = self.generate_response(query, context)
         return response, relevant_chunks
+
 
 
 
