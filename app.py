@@ -7,7 +7,7 @@ def main():
     st.set_page_config(page_title="RAG Agent with Tiny Llama", page_icon="🐒", layout="wide")
     st.title("🐒 RAG Agent with Tiny Llama")
     st.markdown("Upload PDF documents and chat with them using advanced AI!")
-
+    @st.cache_resource
     if 'rag_agent' not in st.session_state:
         st.session_state.rag_agent = EnhancedRAGAgent()
     if 'chat_history' not in st.session_state:
@@ -90,4 +90,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
