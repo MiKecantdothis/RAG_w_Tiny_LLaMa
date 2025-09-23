@@ -10,7 +10,7 @@ import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
 from huggingface_hub import login
-hf_token = st.secrets["hf_token"]
+hf_token = os.getenv("hf_token")
 login(token = hf_token)
 
 class EnhancedRAGAgent:
@@ -185,6 +185,7 @@ Context:
         context = "\n\n".join([chunk for chunk, _, _ in relevant_chunks])
         response = self.generate_response(query, context)
         return response, relevant_chunks
+
 
 
 
