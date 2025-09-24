@@ -10,6 +10,8 @@ def main():
     @st.cache_resource
     def load_ragagent():
         return EnhancedRAGAgent()
+
+    rag_agent = load_ragagent()
     if 'rag_agent' not in st.session_state:
         st.session_state.rag_agent = load_ragagent()
     if 'chat_history' not in st.session_state:
@@ -92,6 +94,7 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
 
